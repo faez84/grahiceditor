@@ -1,0 +1,5 @@
+services:
+    command.editro:
+        class: App\Command\EditorCommand
+        arguments: ['@service.editor']
+

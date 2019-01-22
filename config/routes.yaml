@@ -1,0 +1,19 @@
+index:
+    path: /
+    controller: App\Controller\EditorController::indexAction
+add_shapes:
+    path: /addshapes
+    controller: App\Controller\EditorController::addShapesAction
+    methods: [POST]
+draw_shapes:
+    path: /draw
+    controller: App\Controller\EditorController::drawAction
+    methods: [GET]
+get_shape:
+    path: /get/{id}
+    controller: App\Controller\EditorController::getAction
+    methods: [GET]
+get_all_shapes:
+    path: /get
+    controller: App\Controller\EditorController::getAllAction
+    methods: [GET]

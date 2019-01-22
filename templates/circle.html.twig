@@ -1,0 +1,8 @@
+{% extends 'shape.html.twig' %}
+ {% block parameters %}
+     <div class="form-group">
+         <label for="message-text" class="col-form-label">* radius:</label>
+         <input type="number" class="form-control" id="radius" min="1" value="1" required>
+         <input type="hidden" class="form-control" id="type" value="circle">
+     </div>
+ {% endblock %}
