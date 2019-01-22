@@ -16,6 +16,8 @@ class Editor
 
     /** @var ShapeFactory */
     private $shapeFactory;
+    /** @var  bool */
+    private $_enabledValidation = true;
 
     public function __construct(ShapeFactory $shapeFactory, ShapeList $shapeList)
     {
@@ -42,7 +44,9 @@ class Editor
         $shape = $this->shapeFactory->create($param['type']);
 
         $shape->setParamsFromArray($param['params']);
-        Validator::basicValidation($shape);
+        if ($this->_enabledValidation) {
+            Validator::basicValidation($shape);
+        }
         $this->shapeList->addShape($shape);
 
         return true;
@@ -99,5 +103,13 @@ class Editor
     public function getShape(string $id)
     {
         return $this->shapeList->getShape($id);
+    }
+
+    /**
+     * @param bool $enabledValidation
+     */
+    public function setEnabledValidation(bool $enabledValidation)
+    {
+        $this->_enabledValidation = $enabledValidation;
     }
 }

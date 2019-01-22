@@ -21,8 +21,8 @@ class ShapeFactoryTest extends WebTestCase
 
     public function testCreateShape()
     {
-        $this->shapeFactory->setFactoryNamespace('App\Tests\Models');
-        $this->assertInstanceOf('App\Tests\Models\SimpleShape', $this->shapeFactory->create('SimpleShape'));
+        $this->shapeFactory->setFactoryNamespace('App\Models');
+        $this->assertInstanceOf('App\Models\Circle', $this->shapeFactory->create('circle'));
     }
 
     public function testGetFactoryNamespace()

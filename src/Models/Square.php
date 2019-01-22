@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 class Square extends AbstractShape
 {
     /**

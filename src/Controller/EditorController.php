@@ -94,4 +94,24 @@ class EditorController extends AbstractController
 
         return $response;
     }
+
+    /**
+     * @param string $id
+     * @return Response
+     */
+    public function deleteAction(string $id)
+    {
+        try {
+            $this->_editor->removeShape($id);
+            $codeStatus = Response::HTTP_NO_CONTENT;
+            $deleteResult = 'Done';
+        } catch (\Exception $badRequestHttpException) {
+            $codeStatus = Response::HTTP_BAD_REQUEST;
+            $deleteResult = 'Error';
+        }
+        $response = new Response(json_encode($deleteResult), $codeStatus);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
 }

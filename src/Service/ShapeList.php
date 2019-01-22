@@ -22,8 +22,9 @@ class ShapeList
     }
 
     /**
-     * @param int $shapeNumber
+     * @param string $id
      * @return AbstractShape
+     * @throws NotFoundShapeException
      */
     public function getShape(string $id): AbstractShape
     {

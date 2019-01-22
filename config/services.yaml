@@ -48,3 +48,6 @@ services:
             - method: setFactoryNamespace
               arguments:
                   - 'App\Models'
+    command.editro:
+        class: App\Command\EditorCommand
+        arguments: ['@service.editor']

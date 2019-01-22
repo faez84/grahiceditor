@@ -18,10 +18,13 @@
                 <div class="col-12 col-md-12 list-title">Graphic Editor</div>
             </div>
             <div class="row">
-                <div class="col-6 col-md-3">
-                     <i class="far fa-circle cursor-style" data-toggle="modal" data-target="#circleModal"></i>
-                     <i class="far fa-plus-square cursor-style" id="addShapesBtn"></i>
-                    <i class="fas fa-palette cursor-style" id="drawBtn"></i>
+                <div class="col-6 col-md-6">
+                    <i class="far fa-circle" data-toggle="modal" data-target="#circleModal" title="Add circle">Add circle</i>
+                    <i class="far fa-square" data-toggle="modal" data-target="#squareModal" title="Add square">Add square</i>
+                </div>
+                <div class="col-6 col-md-6">
+                    <i class="far fa-plus-square cursor-style" id="addShapesBtn" title="Add to editor cache">Add to editor cache</i>
+                    <i class="fas fa-palette cursor-style" id="drawBtn" title="Draw">Draw</i>
                 </div>
             </div>
             <div class="row list-header">
@@ -33,5 +36,6 @@
             </div>
         </div>
     </div>
-    {% include "circle.html.twig" %}
+    {% include "circle.html.twig" with {'foo': 'bar'}%}
+    {% include "square.html.twig" %}
 {% endblock %}

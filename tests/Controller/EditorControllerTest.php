@@ -16,6 +16,9 @@ class EditorControllerTest extends WebTestCase
     /** @var  Client */
     private $client;
 
+    private $fakeClient;
+    private $fakeResponse;
+
     public function setUp()
     {
         parent::setUp();
@@ -23,6 +26,14 @@ class EditorControllerTest extends WebTestCase
 
         $this->editor = self::$container->get('controller.editor');
         $this->client = self::createClient();
+        $this->fakeResponse = $this->getMockBuilder(Response::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['getStatusCode'])
+            ->getMock();
+        $this->fakeClient = $this->getMockBuilder(Client::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['request', 'getResponse'])
+            ->getMock();
     }
 
     public function testAddShapesActionReturnCreated()
@@ -107,6 +118,57 @@ class EditorControllerTest extends WebTestCase
             ['CONTENT_TYPE' => 'application/json']
         );
         $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function testDeleteActionReturnsNoContent()
+    {
+        $this->fakeClient
+            ->expects($this->once())
+            ->method('request')
+            ->with('DELETE', '/delete', ['id' => '5c4705016ec64'], [], ['CONTENT_TYPE' => 'application/json']);
+
+        $this->fakeClient
+            ->expects($this->once())
+            ->method('getResponse')
+            ->will($this->returnValue($this->fakeResponse));
+        $this->fakeResponse
+            ->expects($this->once())
+            ->method('getStatusCode')
+            ->will($this->returnValue(Response::HTTP_NO_CONTENT));
+        $this->fakeClient->request(
+            'DELETE',
+            '/delete',
+            ['id' => '5c4705016ec64'],
+            [],
+            ['CONTENT_TYPE' => 'application/json']
+        );
+        $this->assertEquals(Response::HTTP_NO_CONTENT, $this->fakeClient->getResponse()->getStatusCode());
+    }
+
+
+    public function testDeleteActionReturnsBadRequest()
+    {
+        $this->fakeClient
+            ->expects($this->once())
+            ->method('request')
+            ->with('DELETE', '/delete', ['id' => '5c4705016ec64'], [], ['CONTENT_TYPE' => 'application/json']);
+
+        $this->fakeClient
+            ->expects($this->once())
+            ->method('getResponse')
+            ->will($this->returnValue($this->fakeResponse));
+        $this->fakeResponse
+            ->expects($this->once())
+            ->method('getStatusCode')
+            ->will($this->returnValue(Response::HTTP_BAD_REQUEST));
+        $this->fakeClient->request(
+            'DELETE',
+            '/delete',
+            ['id' => '5c4705016ec64'],
+            [],
+            ['CONTENT_TYPE' => 'application/json']
+        );
+        $this->assertEquals(Response::HTTP_BAD_REQUEST, $this->fakeClient->getResponse()->getStatusCode());
     }
 
     public function getShapes():array

@@ -17,3 +17,7 @@ get_all_shapes:
     path: /get
     controller: App\Controller\EditorController::getAllAction
     methods: [GET]
+delete_shape:
+    path: /delete
+    controller: App\Controller\EditorController::deleteAction
+    methods: [DELETE]

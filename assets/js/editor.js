@@ -8,9 +8,27 @@
 $(function() {
    const shapes = new Array();
 
-    $("#addShapeBtn").on('click', function()  {
-        let params = {radius:$("#radius").val(), xPosition:$("#xPosition").val(), yPosition:$("#xPosition").val()};;
-        let shape = {type:$("#type").val(), params:params}
+    function initializeData()
+    {
+        let params = {
+            color:$('#color').val(),
+            border:$('#border').val(),
+            size:$('#size').val(),
+            xPosition:$("#xPosition").val(),
+            yPosition:$("#xPosition").val()
+        };
+        return params
+    }
+    $("#addCircleBtn").on('click', function()  {
+        let params = initializeData();
+        params['radius'] = $("#radius").val();
+        let shape = {type:'circle', params:params}
+        shapes.push(shape);
+    });
+    $("#addSquareBtn").on('click', function()  {
+        let params = initializeData();
+        params['length'] = $("#length").val();
+        let shape = {type:'square', params:params}
         shapes.push(shape);
     });
     $("#addShapesBtn").on('click', function()  {
@@ -27,7 +45,8 @@ $(function() {
 
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                $('#drawPanel').append(xhr.responseText);
+                $('#drawPanel').append(xhr.responseText + ': An error happened while adding shapes, please try again ' +
+                    'or check if you added any shape before');
             }
         });
     });

@@ -2,7 +2,6 @@
 
 namespace App\Command;
 
-
 use App\Exceptions\NotFoundShapeException;
 use App\Models\AbstractShape;
 use App\Service\Editor;
@@ -23,6 +22,7 @@ class EditorCommand extends Command
     {
         parent::__construct($name);
         $this->_editor = $editor;
+        $this->_editor->setEnabledValidation(false);
     }
 
     protected function configure()
@@ -54,7 +54,7 @@ class EditorCommand extends Command
                     $this->removeShape($input, $output, $helper);
                     break;
                 case 'draw':
-                    $output->writeln('Output: ');
+                    $output->writeln('Editor output: ');
                     $output->writeln($this->_editor->drawShapes());
                     break;
             }

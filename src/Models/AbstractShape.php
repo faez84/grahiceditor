@@ -4,15 +4,26 @@ namespace App\Models;
 
 use App\Interfaces\ShapeInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 abstract class AbstractShape implements ShapeInterface
 {
     public $id;
+    /**
+     * @var
+     * @NotBlank()
+     */
     protected $xPosition;
+
+    /**
+     * @var
+     * @NotBlank()
+     */
     protected $yPosition;
 
     protected $color;
     protected $border;
+    protected $size;
 
     public function __construct()
     {
@@ -38,6 +49,7 @@ abstract class AbstractShape implements ShapeInterface
         $this->yPosition = $parameters['yPosition'] ?? null;
         $this->border = $parameters['border'] ?? null;
         $this->color = $parameters['color'] ?? null;
+        $this->size = $parameters['size'] ?? null;
     }
 
     /**
@@ -46,7 +58,7 @@ abstract class AbstractShape implements ShapeInterface
     public function getParams()
     {
         return [
-            'xPosition','yPosition'
+            'xPosition','yPosition', 'border', 'color', 'size'
         ];
     }
 

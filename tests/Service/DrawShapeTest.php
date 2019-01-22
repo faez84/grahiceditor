@@ -2,13 +2,8 @@
 
 namespace App\Tests\Service;
 
-
 use App\Models\AbstractShape;
-use App\Models\Circle;
 use App\Service\DrawShape;
-use App\Service\Editor;
-use App\Models\Square;
-use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DrawShapeTest extends WebTestCase
