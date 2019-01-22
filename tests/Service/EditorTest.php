@@ -46,7 +46,7 @@ class EditorTest extends WebTestCase
     {
         $params = $this->getShapes();
         $params[0]['type'] = null;
-        $this->assertTrue($this->editor->addShape( $params[0]));
+        $this->assertTrue($this->editor->addShape($params[0]));
     }
 
     public function testAddShapesReturnsTrue()

@@ -37,7 +37,6 @@ class DrawShapeTest extends WebTestCase
             ->method('draw')
             ->will($this->returnValue('circle'));
 
-        $this->assertContains('circle',$this->drawShape->drawShape($this->circle));
-
+        $this->assertContains('circle', $this->drawShape->drawShape($this->circle));
     }
 }

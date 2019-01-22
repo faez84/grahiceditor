@@ -2,14 +2,9 @@
 
 namespace App\Tests\Service;
 
-
 use App\Models\Circle;
 use App\Models\ShapeFactory;
-use App\Service\Editor;
-use App\Models\Square;
-use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class CircleTest extends WebTestCase
 {
@@ -35,6 +30,6 @@ class CircleTest extends WebTestCase
 
     public function testGetParams()
     {
-       $this->assertContains('radius', $this->circle->getParams()[2]);
+        $this->assertContains('radius', $this->circle->getParams()[2]);
     }
 }

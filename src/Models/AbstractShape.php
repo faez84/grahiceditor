@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Interfaces\ShapeInterface;
-use Symfony\Component\Validator;
 use Symfony\Component\Validator\Constraints as Assert;
 
 abstract class AbstractShape implements ShapeInterface

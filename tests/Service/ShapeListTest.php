@@ -26,9 +26,9 @@ class ShapeListTest extends WebTestCase
     }
 
     public function testAddShape()
-    { 
-       $circle = $this->factory->create('circle');
-       $this->assertTrue($this->shapeList->addShape($circle));
+    {
+        $circle = $this->factory->create('circle');
+        $this->assertTrue($this->shapeList->addShape($circle));
     }
     /**
      * @expectedException App\Exceptions\NotFoundShapeException

@@ -5,7 +5,6 @@ namespace App\Tests\Models;
 use App\Models\AbstractShape;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-
 class SimpleShape extends AbstractShape
 {
     public $param;

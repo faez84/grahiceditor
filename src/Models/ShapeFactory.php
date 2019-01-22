@@ -66,14 +66,15 @@ class ShapeFactory
      * @return string
      * @throws FactoryException
      */
-    protected function getClassName($name) {
+    protected function getClassName($name)
+    {
         if (empty($name)) {
             throw new FactoryException('$name must not be empty');
         }
         $result = $this->getFactoryNamespace() . '\\' . ucfirst($name) ;
 
         if (!class_exists($result)) {
-            throw new FactoryException ('Class "' . $result . '" does not exist.');
+            throw new FactoryException('Class "' . $result . '" does not exist.');
         }
 
         return $result;

@@ -2,11 +2,7 @@
 
 namespace App\Tests\Service;
 
-
 use App\Controller\EditorController;
-use App\Service\Editor;
-use App\Models\Square;
-use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Bundle\FrameworkBundle\Client;

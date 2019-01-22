@@ -59,7 +59,7 @@ class Editor
             throw new BadRequestHttpException('There is no shape to add');
         }
         foreach ($params as $param) {
-           $this->addShape($param);
+            $this->addShape($param);
         }
         return true;
     }
@@ -85,6 +85,7 @@ class Editor
 
     /**
      * @param string $id
+     * @return bool
      */
     public function removeShape(string $id):bool
     {
@@ -92,7 +93,7 @@ class Editor
     }
 
     /**
-     * @param strinf $id
+     * @param string $id
      * @return AbstractShape
      */
     public function getShape(string $id)

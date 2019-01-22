@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Validation;
 class Validator
 {
     /**
-     * @param EntityInterface $shape
+     * @param AbstractShape $shape
      * @throws BadRequestHttpException
      */
     public static function basicValidation(AbstractShape $shape): void

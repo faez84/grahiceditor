@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-
 use App\Exceptions\NotFoundShapeException;
 use App\Interfaces\Shape;
 use App\Models\AbstractShape;
@@ -36,8 +35,9 @@ class ShapeList
     }
 
     /**
-     * @param AbstractShape $shape
+     * @param string $id
      * @return bool
+     * @throws NotFoundShapeException
      */
     public function removeShape(string $id): bool
     {

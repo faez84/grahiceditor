@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-
 class Circle extends AbstractShape
 {
     /**

@@ -21,7 +21,6 @@ class EditorController extends AbstractController
     }
 
     /**
-     * @param Request $request
      * @return Response
      */
     public function indexAction()
@@ -37,7 +36,6 @@ class EditorController extends AbstractController
     {
         $shapes = $request->request->all();
         try {
-
             $this->_editor->addShapes($shapes['shapes']);
             $codeStatus = Response::HTTP_CREATED;
             $drawResult = 'New shape(s) has(have) been added ';
@@ -62,8 +60,7 @@ class EditorController extends AbstractController
             $this->_editor->addShapes($shapes['shapes']);
             $drawResult = $this->_editor->drawShapes();
             $codeStatus = Response::HTTP_OK;
-        } catch (BadRequestHttpException $badRequestHttpException)
-        {
+        } catch (BadRequestHttpException $badRequestHttpException) {
             $drawResult = $badRequestHttpException->getMessage();
             $codeStatus = Response::HTTP_BAD_REQUEST;
         }
@@ -74,7 +71,7 @@ class EditorController extends AbstractController
     }
 
     /**
-     * @param Request $request
+     * @param string $id
      * @return Response
      */
     public function getAction(string $id)
@@ -96,6 +93,5 @@ class EditorController extends AbstractController
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
-
     }
 }
