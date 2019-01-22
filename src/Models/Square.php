@@ -2,30 +2,39 @@
 
 namespace App\Models;
 
-
-
-
 class Square extends AbstractShape
 {
     /**
-     * @var $side
-     * @Assert\NotBlank()
+     * @var $length
+     * @NotBlank()
      */
-    public $side;
+    public $length;
 
     /**
      * @return string
      */
-    public function draw()
+    public function draw():string
     {
-        return 'square';
+        return $this->id . ' square ' . '<br/>';
     }
 
+    /**
+     * @param array $parameters
+     * @return $this
+     */
     public function setParamsFromArray(array $parameters)
     {
         parent::setParamsFromArray($parameters);
-        $this->side = $parameters['side'] ?? null;
+        $this->length = $parameters['length'] ?? null;
 
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getParams()
+    {
+        return array_merge(parent::getParams(), ['length']);
     }
 }
